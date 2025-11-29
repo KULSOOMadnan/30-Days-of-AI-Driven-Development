@@ -48,8 +48,12 @@ You MUST use:
 
 - **Environment variable:**
 ```
-  GEMINI_API_KEY
+  GEMINI_API_KEY=''
 ```
+- Use openai-agents SDK ONLY
+- Do NOT use openai standard library
+- Tools must follow official openai-agents syntax
+- Gemini model must be initialized with:
 
 ❗ **If ANY ImportError, SyntaxError, or attribute error occurs → STOP.**  
 You MUST call `get-library-docs` through Context07 before proceeding.
@@ -75,42 +79,54 @@ Use **uv** for environment creation and dependency installation.
 - `pypdf`
 - `python-dotenv`
 
-if need in project can do more **DO NOT INSTALL IF ALREADY INSTALL** 
+if need any package in project can do install  more **DO NOT INSTALL IF ALREADY INSTALL** 
 
 ---
 
 ## 3. Architecture & Folder Structure
 
-(Current working directory is project root.)
-```
-.
-├── .env
-├── GEMINI.md                 # <-- this file
-├── agent/
+pdf-summarizer/
+│
+├── .env                                # Environment variables (GEMINI_API_KEY etc.)
+││
+├── .venv/                          # UV virtual environment
+├── GEMINI.md                           # Root project specification (master spec)
+│
+├── agent/                                 # Updated multi-agent system
 │   ├── GEMINI.md
-│   ├── agent.py
-│   └── tools.py
-├── core/
-│   ├── GEMINI.md
-│   ├── pdf_reader.py
-│   ├── summarizer.py
-│   └── quiz_generator.py
-├── ui/
-│   ├── GEMINI.md
-│   ├── app.py
-│   └── components/
-│       ├── uploader.py
-│       ├── summary_viewer.py
-│       ├── quiz_viewer.py
-│       └── history_viewer.py
-├── storage/
-│   ├── GEMINI.md
-│   └── history.json
+│   ├── __init__.py`              
+│   ├── extraction_agent.py                # Agent: PDF text extraction specialist
+│   ├── summarization_agent.py             # Agent: Summary generation specialist
+│   ├── highlight_agent.py                 # Agent: Key highlights extractor
+│   ├── quiz_agent.py                      # Agent: Quiz generation specialist
+│   └── orchestrator.py                    # openai-agents SDK compatible tools
+|
+├── core/                               # Core business logic (PDF, summary, quiz)
+│   ├── GEMINI.md                       # Spec for core logic rules
+│   ├── pdf_reader.py                   # PyPDF text extraction wrapper
+│   ├── summarizer.py                   # Summary generation logic
+│   └── quiz_generator.py               # Quiz generation logic
+│
+├── ui/                                 # Streamlit UI & layouts
+│   ├── GEMINI.md                       # UI/UX specification
+│   ├── app.py                          # Main Streamlit app
+│   └── components/                     # Modular UI components
+│       ├── uploader.py                 # PDF uploader component
+│       ├── summary_viewer.py           # Summary display component
+│       ├── quiz_viewer.py              # Quiz display component
+│       └── history_viewer.py           # History display component
+│
+├── storage/                            # Persistent JSON storage
+│   ├── GEMINI.md                       # Storage spec (rules, constraints)
+│   └── history.json                    # Saved summaries + quiz logs
+│
 ├── screenshots/
-│   └── gemini_prompt.png
-├── pyproject.toml
-└── README.md
-```
+│   └── gemini_prompt.png               # Screenshot of Gemini-CLI scaffolding prompt
+│
+├── pyproject.toml                      # uv configuration + dependencies
+│
+└── README.md                           # User-facing documentation
+
 
 ---
 
@@ -256,6 +272,44 @@ Save the Gemini-CLI prompt as:
 ```
 
 ---
+
+
+## 🔧 Technical Implementation Details
+
+### OpenAgents SDK Setup
+
+```python
+# agents/orchestrator.py
+from agents import Agent,
+
+# Define individual agents
+extraction_agent = Agent(
+    name="pdf_extractor",
+    instructions="You extract and clean text from PDF documents.",
+    tools=[pdf_extraction_tool, text_cleaning_tool]
+)
+
+summarization_agent = Agent(
+    name="summarizer",
+    instructions="You generate concise, accurate summaries using context.",
+    tools=[gemini_api_tool, context7_mcp_tool]
+)
+
+highlight_agent = Agent(
+    name="highlight_extractor",
+    instructions="You identify and extract key highlights from documents.",
+    tools=[highlight_extraction_tool]
+)
+
+# Create orchestrator
+orchestrator = Agent(
+    agents=[extraction_agent, summarization_agent, highlight_agent],
+    strategy="sequential"  # Run agents in sequence
+)
+```
+
+---
+
 
 ## 5. Testing Scenarios
 
