@@ -5,6 +5,13 @@
 **Status**: Draft
 **Input**: User description: "Specification: Basic Python Calculator 1. Overview This document outlines the requirements for a simple, command-line calculator program written in Python. The program will perform basic arithmetic operations based on user input. 2. Core Features The calculator must support the following arithmetic operations: * Addition (+): Adds two numbers. * Subtraction (-): Subtracts the second number from the first. * Multiplication (*): Multiplies two numbers. * Division (/): Divides the first number by the second. 3. User Interaction * The program will run in the command line. * It will prompt the user to enter a first number, an operator, and a second number. * After the user provides the inputs, the program will calculate the result and display it on the screen. * The program should then ask the user if they want to perform another calculation. 4. Error Handling The program must handle the following situations gracefully: * Division by Zero: If the user tries to divide a number by zero, the program should not crash. It should display an error message like, 'Error: Cannot divide by zero.' * Invalid Operator: If the user enters an operator other than +, -, *, or /, the program should display an error message like, 'Error: Invalid operator. Please use +, -, *, or /.' * Invalid Number: If the user enters a value that is not a number (e.g., 'abc'), the program should display an error message like, 'Error: Please enter valid numbers.' 5. Technical Specification * Language: Python 3 * Libraries: No external libraries are needed. All required functionality is available in standard Python. Here is a simple example of what the user interaction could look like: 1 Enter the first number: 10 2 Enter an operator (+, -, *, /): + 3 Enter the second number: 5 4 Result: 15 5 6 Do you want to perform another calculation? (yes/no): yes 7 8 Enter the first number: 8 9 Enter an operator (+, -, *, /): / 10 Enter the second number: 0 11 Error: Cannot divide by zero. 12 13 Do you want to perform another calculation? (yes/no): no"
 
+## Clarifications
+
+### Session 2025-12-02
+
+- Q: What is the expected precision for floating-point calculations? → A: Standard Python float precision.
+- Q: What is the expected range of numbers the calculator should handle? → A: Small integers only (e.g., -1000 to 1000).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Perform a calculation (Priority: P1)
@@ -42,10 +49,6 @@ As a user, I want to be notified when I enter invalid input so that I can correc
 
 ### Edge Cases
 
--   What happens when the user enters a very large number?
--   What happens when the user enters a negative number?
--   What happens when the user enters a floating-point number?
-
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
@@ -57,6 +60,8 @@ As a user, I want to be notified when I enter invalid input so that I can correc
 -   **FR-005**: The system MUST handle invalid operators and display an error message.
 -   **FR-006**: The system MUST handle non-numeric input and display an error message.
 -   **FR-007**: The system MUST ask the user if they want to perform another calculation.
+-   **FR-008**: The system MUST support floating-point numbers with standard Python float precision.
+-   **FR-009**: The system MUST restrict numbers to small integers within the range of -1000 to 1000.
 
 ## Success Criteria *(mandatory)*
 
