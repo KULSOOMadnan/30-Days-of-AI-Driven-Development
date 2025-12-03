@@ -7,12 +7,12 @@ This document breaks down the implementation of the Basic Python Calculator into
 
 ## Phase 1: Setup
 
-- [ ] T001 Create the project structure as defined in `plan.md`.
-- [ ] T002 Create `src/calculator/__init__.py`.
-- [ ] T003 Create `src/calculator/operations.py`.
-- [ ] T004 Create `src/main.py`.
-- [ ] T005 Create `src/tests/__init__.py`.
-- [ ] T006 Create `src/tests/test_operations.py`.
+- [X] T001 Create the project structure as defined in `plan.md`.
+- [X] T002 Create `src/calculator/__init__.py`.
+- [X] T003 Create `src/calculator/operations.py`.
+- [X] T004 Create `src/main.py`.
+- [X] T005 Create `src/tests/__init__.py`.
+- [X] T006 Create `src/tests/test_operations.py`.
 
 ## Phase 2: User Story 1 - Perform a calculation
 
@@ -20,15 +20,15 @@ This document breaks down the implementation of the Basic Python Calculator into
 
 **Independent Test**: The user can run the program, enter two numbers and an operator, and see the correct result.
 
-- [ ] T007 [US1] Write a failing test for the `add` function in `src/tests/test_operations.py`.
-- [ ] T008 [US1] Implement the `add` function in `src/calculator/operations.py` to pass the test.
-- [ ] T009 [US1] Write a failing test for the `subtract` function in `src/tests/test_operations.py`.
-- [ ] T010 [US1] Implement the `subtract` function in `src/calculator/operations.py` to pass the test.
-- [ ] T011 [US1] Write a failing test for the `multiply` function in `src/tests/test_operations.py`.
-- [ ] T012 [US1] Implement the `multiply` function in `src/calculator/operations.py` to pass the test.
-- [ ] T013 [US1] Write a failing test for the `divide` function in `src/tests/test_operations.py`.
-- [ ] T014 [US1] Implement the `divide` function in `src/calculator/operations.py` to pass the test.
-- [ ] T015 [US1] Implement the main loop in `src/main.py` to get user input and call the appropriate operation function.
+- [X] T007 [US1] Write a failing test for the `add` function in `src/tests/test_operations.py`.
+- [X] T008 [US1] Implement the `add` function in `src/calculator/operations.py` to pass the test.
+- [X] T009 [US1] Write a failing test for the `subtract` function in `src/tests/test_operations.py`.
+- [X] T010 [US1] Implement the `subtract` function in `src/calculator/operations.py` to pass the test.
+- [X] T011 [US1] Write a failing test for the `multiply` function in `src/tests/test_operations.py`.
+- [X] T012 [US1] Implement the `multiply` function in `src/calculator/operations.py` to pass the test.
+- [X] T013 [US1] Write a failing test for the `divide` function in `src/tests/test_operations.py`.
+- [X] T014 [US1] Implement the `divide` function in `src/calculator/operations.py` to pass the test.
+- [X] T015 [US1] Implement the main loop in `src/main.py` to get user input and call the appropriate operation function.
 
 ## Phase 3: User Story 2 - Handle Invalid Input
 
@@ -36,10 +36,10 @@ This document breaks down the implementation of the Basic Python Calculator into
 
 **Independent Test**: The user can enter various forms of invalid input and see the correct error messages.
 
-- [ ] T016 [US2] Write a test for division by zero in `src/tests/test_operations.py`.
-- [ ] T017 [US2] Update the `divide` function in `src/calculator/operations.py` to handle division by zero.
-- [ ] T018 [US2] Write tests for invalid operator and non-numeric input in `src/tests/test_operations.py`.
-- [ ] T019 [US2] Update the main loop in `src/main.py` to handle invalid operator and non-numeric input.
+- [X] T016 [US2] Write a test for division by zero in `src/tests/test_operations.py`.
+- [X] T017 [US2] Update the `divide` function in `src/calculator/operations.py` to handle division by zero.
+- [X] T018 [US2] Write tests for invalid operator and non-numeric input in `src/tests/test_operations.py`.
+- [X] T019 [US2] Update the main loop in `src/main.py` to handle invalid operator and non-numeric input.
 
 ## Dependencies
 
